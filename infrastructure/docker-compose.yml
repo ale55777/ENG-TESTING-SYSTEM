@@ -1,0 +1,24 @@
+name: english-learning-platform
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: elp-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-english}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-english}
+      POSTGRES_DB: ${POSTGRES_DB:-english_learning}
+    ports:
+      # Bound to localhost only. 5433 avoids clashing with a locally installed PostgreSQL.
+      - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - elp_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-english} -d ${POSTGRES_DB:-english_learning}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  elp_pgdata:

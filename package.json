@@ -1,0 +1,12 @@
+{
+  "name": "linguapractice",
+  "private": true,
+  "description": "Root scripts: `npm run dev` starts PostgreSQL, the FastAPI backend and the Next.js website together.",
+  "scripts": {
+    "dev": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/dev.ps1",
+    "start": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start.ps1",
+    "stop": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/stop.ps1",
+    "setup": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/setup.ps1",
+    "test": "cd backend && .venv\\Scripts\\python -m pytest -q && cd ../apps/web && npm test"
+  }
+}

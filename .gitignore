@@ -1,0 +1,26 @@
+# secrets / local config
+.env
+.env.*
+!.env.example
+apps/web/.env.local
+
+# python
+backend/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# local models and generated data (downloaded by scripts/setup.ps1)
+backend/models/
+backend/data/
+
+# node / next
+apps/web/node_modules/
+apps/web/.next/
+apps/web/next-env.d.ts
+*.tsbuildinfo
+
+# runtime
+.run/
+logs/
+*.log
